@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1 
+kind: NetworkPolicy 
+metadata:
+   name: db-allow-mysql-conn
+   namespace: database 
+spec:
+  podSelector:
+    matchLabels:
+       network.openshift.io/policy-group: mysql 
+
+  policyTypes:
+   - Ingress
+  ingress:
+     - from: 
+         - namespaceSelector:
+             matchLabels:
+                 team: devsecops
+
+           podSelector:
+             matchLabels:
+                deploymentdb-mysql: deployment-app 
+       ports:
+         - port: 3360 
+           protocol: TCP mi
+

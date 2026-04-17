@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-traffic-from-pod-to-pod
+  namespace: dev
+
+spec:
+  podSelector:
+    matchLabels:
+      app: dev-nginx2
+
+  policyTypes:
+  - Ingress
+  
+
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: dev-nginx
+    ports:
+    - protocol: TCP
+      port: 80
