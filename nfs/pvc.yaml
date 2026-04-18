@@ -5,7 +5,7 @@ metadata:
   namespace: nfs
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteMany 
   resources:
     requests:
       storage: 500Mi
