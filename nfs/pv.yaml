@@ -8,6 +8,7 @@ spec:
   accessModes:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
+  storageClassName: nfs-storage
   nfs:
     server: nfs-service.nfs.svc.cluster.local
     path: /
